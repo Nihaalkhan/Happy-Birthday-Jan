@@ -1,0 +1,481 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap');
+
+:root {
+    --background: #100916;
+    --purple: #311638;
+    --pink: #e7a0c6;
+    --light-pink: #f6c9df;
+    --gold: #d8b77d;
+    --cream: #f7eaf0;
+    --muted: #c3aab9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 50% 20%, #321a3c 0%, transparent 55%),
+        linear-gradient(135deg, #100916, #1b1022 55%, #120b19);
+    color: var(--cream);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* BACKGROUND */
+
+.background-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #9c397f;
+    filter: blur(180px);
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #f7c6df;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.5);
+    }
+}
+
+/* MAIN LAYOUT */
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 100vh;
+    margin: auto;
+    padding: 65px 20px 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 55px;
+    animation: fadeIn 1.5s ease;
+}
+
+.eyebrow {
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 10px;
+    margin-bottom: 15px;
+}
+
+.intro h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 55px);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.intro h1 span {
+    color: var(--pink);
+}
+
+.intro-text {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 15px;
+}
+
+/* BOOK */
+
+.book-container {
+    display: flex;
+    justify-content: center;
+    perspective: 1500px;
+}
+
+.book {
+    width: min(100%, 620px);
+    min-height: 510px;
+    position: relative;
+    transition: transform 1s ease;
+}
+
+.book-cover {
+    width: 100%;
+    min-height: 510px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 45px 25px;
+    border: 1px solid rgba(216, 183, 125, 0.45);
+    border-radius: 5px 16px 16px 5px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,0.04), transparent 35%),
+        linear-gradient(145deg, #3c1b43, #1b1027 70%);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5),
+        inset 8px 0 15px rgba(0,0,0,0.25);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cover-decoration {
+    color: var(--gold);
+    font-size: 35px;
+    margin-bottom: 22px;
+}
+
+.cover-small {
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 5px;
+    margin-bottom: 22px;
+}
+
+.book-cover h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(45px, 8vw, 70px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #f7d9e8;
+}
+
+.cover-line {
+    width: 90px;
+    height: 1px;
+    background: var(--gold);
+    margin: 25px 0;
+}
+
+.book-cover h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 27px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--gold);
+}
+
+.cover-message {
+    color: #d6bacb;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 16px;
+}
+
+.cover-heart {
+    color: var(--pink);
+    font-size: 28px;
+    margin-top: 25px;
+}
+
+.open-button {
+    margin-top: 28px;
+    padding: 12px 25px;
+    border: 1px solid rgba(231,160,198,0.7);
+    background: rgba(231,160,198,0.08);
+    color: var(--light-pink);
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.open-button:hover {
+    background: rgba(231,160,198,0.2);
+    box-shadow: 0 0 25px rgba(231,160,198,0.2);
+    transform: translateY(-3px);
+}
+
+.open-button span {
+    margin-left: 12px;
+}
+
+/* BOOK CONTENT */
+
+.book-content {
+    display: none;
+    min-height: 510px;
+    padding: 28px 35px 25px;
+    background:
+        linear-gradient(rgba(255,255,255,0.94), rgba(248,232,239,0.97)),
+        #f7eaf0;
+    color: #42283d;
+    border-radius: 4px 14px 14px 4px;
+    border: 1px solid rgba(216,183,125,0.6);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.45),
+        inset 8px 0 12px rgba(80,35,65,0.08);
+    animation: pageAppear 0.9s ease;
+}
+
+.book.opened .book-cover {
+    display: none;
+}
+
+.book.opened .book-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(91,52,79,0.18);
+    color: #93607e;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+.page-content {
+    flex: 1;
+    padding: 35px 10px 25px;
+    text-align: center;
+    animation: fadeIn 0.7s ease;
+}
+
+.page-number {
+    font-family: 'Cormorant Garamond', serif;
+    color: #b28b9f;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.chapter-label {
+    color: #a56c8e;
+    letter-spacing: 4px;
+    font-size: 9px;
+    margin-bottom: 12px;
+}
+
+.page-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(29px, 5vw, 39px);
+    font-weight: 500;
+    color: #4b2b43;
+    margin-bottom: 25px;
+}
+
+.poem {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 22px);
+    line-height: 1.65;
+    color: #634457;
+}
+
+/* NAVIGATION */
+
+.book-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(91,52,79,0.18);
+}
+
+.book-navigation button {
+    border: none;
+    background: transparent;
+    color: #86516f;
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.book-navigation button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.book-navigation button:not(:disabled):hover {
+    color: #bd6798;
+}
+
+#pageCounter {
+    color: #9c788e;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.letter-button {
+    align-self: center;
+    margin-top: 18px;
+    padding: 10px 20px;
+    border: 1px solid #bd8da8;
+    background: transparent;
+    color: #81516e;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.letter-button:hover {
+    background: rgba(189,141,168,0.15);
+}
+
+/* LETTER */
+
+.letter-section {
+    width: min(100%, 620px);
+    margin: 45px auto 20px;
+    animation: fadeIn 1.2s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.letter-card {
+    padding: 45px clamp(22px, 6vw, 55px);
+    border: 1px solid rgba(216,183,125,0.35);
+    border-radius: 5px;
+    background:
+        linear-gradient(145deg, rgba(65,31,69,0.95), rgba(25,14,33,0.98));
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.letter-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    font-weight: 400;
+    color: var(--light-pink);
+    margin-bottom: 28px;
+}
+
+.letter-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.8;
+    color: #e4cbd9;
+}
+
+.letter-text p {
+    margin-bottom: 20px;
+}
+
+.letter-ending {
+    color: var(--gold);
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 28px;
+}
+
+.signature {
+    color: var(--pink);
+    font-style: italic;
+    margin-top: 30px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    margin-top: 55px;
+    padding-bottom: 20px;
+    color: #8e7187;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+/* ANIMATIONS */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: rotateY(-8deg) translateX(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateY(0) translateX(0);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 45px 15px 25px;
+    }
+
+    .intro {
+        margin-bottom: 35px;
+    }
+
+    .book,
+    .book-cover,
+    .book-content {
+        min-height: 530px;
+    }
+
+    .book-content {
+        padding: 22px 18px;
+    }
+
+    .page-content {
+        padding: 30px 5px 20px;
+    }
+
+    .poem {
+        font-size: 18px;
+    }
+
+    .letter-card {
+        padding: 35px 23px;
+    }
+
+    .letter-text {
+        font-size: 18px;
+    }
+}
